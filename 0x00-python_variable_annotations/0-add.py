@@ -3,6 +3,7 @@
 This script contains a function to add two floating-point numbers.
 """
 
+
 def add(a: float, b: float) -> float:
     """
     Adds two floating-point numbers.
