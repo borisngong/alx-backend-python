@@ -5,13 +5,13 @@ and xooming in on elements by repeating over several times
 from typing import List, Union
 
 
-def zoom_array(lst: List, factor: Union[int, float] = 2) -> List:
+def zoom_array(lst: Tuple[int, ...], factor: int = 2) -> List[int]:
     """
     Zoom in on an array by repeating each element a certain number of times
     """
-    zoomed_in: List = [
+    zoomed_in: List[int] = [
         item for item in lst
-        for i in range(int(factor))  # Ensure factor is an integer
+        for i in range(factor)
     ]
     return zoomed_in
 
