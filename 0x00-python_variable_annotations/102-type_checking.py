@@ -2,7 +2,7 @@
 """ A module for working with mypy to validate pieces of code
 and xooming in on elements by repeating over several times
 """
-from typing import List, Union
+from typing import List, Tuple
 
 
 def zoom_array(lst: Tuple[int, ...], factor: int = 2) -> List[int]:
@@ -16,8 +16,8 @@ def zoom_array(lst: Tuple[int, ...], factor: int = 2) -> List[int]:
     return zoomed_in
 
 
-array = [12, 72, 91]
+array = (12, 72, 91)  # Convert to a tuple to match the function signature
 
 zoom_2x = zoom_array(array)
 
-zoom_3x = zoom_array(array, 3.0)
+zoom_3x = zoom_array(array, 3)
