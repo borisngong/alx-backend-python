@@ -3,8 +3,8 @@
 Module for altering wait_n to use task_wait_random instead
 """
 import asyncio
-task_wait_random = __import__('3-tasks').task_wait_random
 from typing import List
+task_wait_random = __import__('3-tasks').task_wait_random
 
 
 async def task_wait_n(n: int, max_delay: int) -> list[float]:
