@@ -1,15 +1,16 @@
 #!/usr/bin/env python3
 """
-Module for working with comprehensive
+Module for working with comprehensive async generator.
 """
 
 import asyncio
 import random
+from typing import AsyncGenerator
 
 
-async def async_generator():
+async def async_generator() -> AsyncGenerator[float, None]:
     """
-    Function that yied random number between 0 and 19 using random Module
+    Asynchronous generator that yields random numbers between 0 and 10.
     """
     for _ in range(10):
         await asyncio.sleep(1)
