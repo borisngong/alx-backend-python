@@ -58,10 +58,12 @@ class TestMemoize(unittest.TestCase):
             """Test Class for wrapping with memoize """
 
             def a_method(self):
+                """Simple method that returns a constant value"""
                 return 42
 
             @memoize
             def a_property(self):
+                """Memoized property that returns the result of a_method"""
                 return self.a_method()
 
         with patch.object(TestClass, 'a_method',
