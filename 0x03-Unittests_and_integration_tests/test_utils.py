@@ -55,6 +55,7 @@ class TestMemoize(unittest.TestCase):
         Test that memoize caches the result of a method after the first call
         """
         class TestClass:
+            """Test Class for wrapping with memoize """
 
             def a_method(self):
                 return 42
