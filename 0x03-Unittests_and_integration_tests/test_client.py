@@ -12,12 +12,10 @@ class TestGithubOrgClient(unittest.TestCase):
     """
     Class responsible for Testing GithubOrgClient methods
     """
-    lass TestGithubOrgClient(unittest.TestCase):
-    """ Class for Testing Github Org Client """
 
     @parameterized.expand([
-        ('google'),
-        ('abc')
+        ('google',),
+        ('abc',)
     ])
     @patch('client.get_json')
     def test_org(self, input, mock):
@@ -25,17 +23,12 @@ class TestGithubOrgClient(unittest.TestCase):
         Test that GithubOrgClient.org returns the correct value
         for a given organization
         """
-
         test_class = GithubOrgClient(input)
 
         # Call the org method, which should call get_json
         test_class.org()
 
         mock.assert_called_once_with(f'https://api.github.com/orgs/{input}')
-
-
-class TestGithubOrgClient(unittest.TestCase):
-    """Class for Testing GithubOrgClient"""
 
     @patch('client.GithubOrgClient.org', new_callable=PropertyMock)
     def test_public_repos_url(self, mock_org):
@@ -54,13 +47,14 @@ class TestGithubOrgClient(unittest.TestCase):
         result = test_client._public_repos_url
 
         self.assertEqual(result, "https://api.github.com/orgs/test-org/repos")
+
     @patch('client.get_json')
     def test_public_repos(self, mock_json):
         """
         Test that public_repos returns the correct list of repository names
-        from the provided JSON payload
+        from the provided JSON payload.
         Verifies that both the mocked _public_repos_url property and get_json
-        are called exactly once
+        are called exactly once.
         """
         # Define mock JSON payload to be returned by get_json
         json_payload = [{"name": "Google"}, {"name": "Twitter"}]
@@ -69,7 +63,6 @@ class TestGithubOrgClient(unittest.TestCase):
         # Mock _public_repos_url to prevent actual URL access
         with patch('client.GithubOrgClient._public_repos_url',
                    new_callable=PropertyMock) as mock_public:
-
             mock_public.return_value = "hello/world"
             test_class = GithubOrgClient('test')
             result = test_class.public_repos()
